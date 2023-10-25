@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="block">
+
+    </div>
+    <style>
+        .item {
+            color: blue;
+            border: 1px solid black;
+            background-color: #f8f8f8;
+            padding: 16 px;
+        }
+    </style>
+    <script>
+        // Дан блок, внутри него необходимо создать элемент div с классом item, разместить текст“ Элемент внутри” и задать стили
+        // Цвет текста синий
+        // Рамка сплошная черная
+        // Цвет фона# f8f8f8
+        // Внутренний отступ 16 px
+        // Добавить данному блоку класс item_1(использовать setAttribute) 
+        const newElement = document.createElement('div');
+        newElement.classList.add('item');
+        newElement.textContent = 'Элемент внутри';
+        const parentElement = document.querySelector('.block');
+        //console.log(parentElement);
+        parentElement.append(newElement);
+        newElement.setAttribute('class', 'item');
+        console.log(newElement);
+
+        newElement.setAttribute('class', `${newElement.className} item_1`);
+        console.log(newElement);
+
+        //pflfxf
+        const form = document.querySelector("form");
+        const input = document.querySelector("input");
+        const textEl = document.createElement("p");
+        textEl.textContent = "вы не заполнили поле ввода";
+        form.onsubmit = function getInput(e) {
+            e.preventDefault();
+            const val = document.querySelector("input").value;
+            if (val.trim() === "") {
+                form.append(textEl);
+                input.style.borderColor = "red";
+            } else {
+                if (textEl) {
+                    textEl.remove();
+                    input.style.borderColor = "black";
+                }
+            }
+        };
+    </script>
+</body>
+
+</html>

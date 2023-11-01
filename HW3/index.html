@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="super_element ckkk">Привет</p>
+
+    <img SameSite=Strict src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+    <img SameSite=Strict src="https://images.unsplash.com/photo-1530406472580-81dc39c4babe?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+    <img src="https://images.unsplash.com/photo-1613339027986-b94d85708995?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+    <img src="https://images.unsplash.com/photo-1621112904887-419379ce6824?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+    <img src="https://images.unsplash.com/photo-1578368508560-f4ca1b14ead3?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+    <img src="https://images.unsplash.com/photo-1684238373912-fd7e900ef8ba?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+
+    <br>
+
+    <button>Кнопка</button>
+    <button class="super_element">Кнопка с классом btn</button>
+    <button>Кнопка</button>
+
+    <br>
+
+    <textarea></textarea>
+
+    <br>
+
+    <ul>
+        <li>
+            <button>Кнопка 1</button>
+        </li>
+        <li>
+            <button>Кнопка 2</button>
+        </li>
+        <li>
+            <button>Кнопка 3</button>
+        </li>
+        <li>
+            <button>Кнопка 4</button>
+        </li>
+    </ul>
+
+    <script>
+        "use strict";
+        //1. Необходимо вывести сообщение в консоль "все теги прогрузились", когда все теги будут созданы браузером.
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("все теги прогрузились");
+        });
+        //2. Необходимо вывести сообщение в консоль "страница загрузилась", когда все ресурсы страницы будут загружены.
+        window.addEventListener("load", () => {
+            console.log("страница загрузилась");
+        });
+        //3. При клике на какой-либо тег на странице в консоль должно выводиться сообщение наподобие:
+        //-Класс "super_element" присутствует в элементе "div". 
+        //-сообщение должно определять присутствует или отсутствует класс "super_element" 
+        //-у элемента, а также выводить в нижнем регистре верный тег в данной строке, по 
+        //-которому был совершен клик. 
+        //-Необходимо использовать делегирование.
+        document.addEventListener('click', findElementByClass);
+
+        function findElementByClass(e) {
+            const element = e.target;
+            const nameTag = element.tagName.toLowerCase();
+            const present = checkClass(element.classList, 'super_element');
+            if (present) {
+                console.log(`Класс "super_element" присутствует в элементе "${nameTag}"`);
+            } else {
+                console.log(`Класс "super_element" отсутствует в элементе "${nameTag}"`);
+            }
+        }
+
+        function checkClass(array, classElement) {
+            for (let index = 0; index < array.length; index++) {
+
+                if (array[index] === classElement) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        };
+        //4. Сделайте, чтобы при наведении на textarea в консоли появлялось сообщение: "Вы навели на textarea."
+        const textAreaElement = document.querySelector('textarea');
+        textAreaElement.addEventListener('mouseover', () => {
+            console.log("Вы навели на textarea.");
+        });
+        //5. Необходимо повесить событие клика на тег ul. В обработчике события в консоль необходимо выводить текст, который записан внутри элемента кнопки, по которой был произведен клик. Если клик был не по кнопке, то ничего выводить не нужно. Необходимо использовать делегирование.
+        const listElement = document.querySelector('ul');
+        listElement.addEventListener('click', textButton);
+
+        function textButton(e) {
+            const elem = e.target;
+            if (elem.tagName === 'BUTTON') {
+                console.log(elem.textContent);
+            }
+        };
+        //6. Вопрос: Почему в console.log пишется сначала текст из 5 задания и только потом выводится текст из 3 задания, если мы кликаем по кнопкам в ul? Ответ необходимо написать здесь же, под этим комментарием, своими словами.
+        //В 5 задании обработчик наложен на элемент "ul", а в 3 задании на весь документ.
+        //Обработчики сначала срабатывают на самом вложенном элементе (в данном случае на ul), затем на его родителе, затем выше и так далее, вверх по цепочке вложенности.
+        //7. С помощью JS необходимо изменить цвет заднего фона каждого второго тега li.
+        const arrayLi = document.querySelectorAll('li');
+        for (let i = 1; i < arrayLi.length; i += 2) {
+            arrayLi[i].style.backgroundColor = '#FF1493';
+        };
+    </script>
+</body>
+
+</html>

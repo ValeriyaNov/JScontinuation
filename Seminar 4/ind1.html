@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#">
+        <input class="input" type="password" placeholder="Password" />
+        <button class="btn" type="submit">Отправить</button>
+    </form>
+    <script>
+        // const form = document.querySelector('.form');
+        // const strTea = form.querySelector('.tea');
+        // const strCoffee = form.querySelector('.coffee');
+        // const btn = form.querySelector('.btn');
+        // const error = form.querySelector('.error');
+        // const inputTea = form.querySelector('.inTea');
+        // const inputCoffee = form.querySelector('.inCoffee');
+
+        // btn.addEventListener('click', errorToProduct)
+
+        // function errorToProduct(event) {
+        //     event.preventDefault();
+        //     if (inputTea.checked) {
+        //         abc(error, strTea);
+        //     } else if (inputCoffee.checked) {
+        //         abc(error, strCoffee);
+        //     } else {
+        //         error.textContent = 'ничего не выбрано. выбирите напиток';
+        //     }
+        // }
+
+        // function addError(str) {
+        //     return `${str} закончился`
+        // }
+
+        // function abc(error, str) {
+        //     error.textContent = addError(str.textContent);
+        // }
+        const formEl = document.querySelector('form');
+        const inputForm = document.querySelector('.input');
+        inputForm.focus();
+        formEl.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let errorText = document.querySelector('p');
+            if (errorText) {
+                errorText.remove();
+            }
+            if (inputForm.value === 'пароль') {
+                inputForm.style.border = '2px solid green';
+                inputForm.placeholder = 'Пароль правильный';
+                inputForm.value = '';
+            } else {
+                const errorText = document.createElement('p');
+                errorText.textContent = 'пароль неверный';
+                errorText.setAttribute('style', 'color: red');
+                formEl.append(errorText);
+                inputForm.style.border = '2px solid red';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

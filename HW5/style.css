@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.product {
+    border: 2px solid transparent;
+    margin: 20px 40px;
+    background-image: url('https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fHBob3RvJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D');
+    border-radius: 25px;
+}
+
+.product:hover {
+    background-image: none;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: #e70f57;
+    text-align: center;
+}
+
+.price {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 30px;
+    color: #e70f57;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.image {
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 15px;
+    padding-bottom: 15 px;
+}

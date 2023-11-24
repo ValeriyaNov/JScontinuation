@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="content"></div>
+    <script src="data.js"></script>
+
+    <script>
+        const data = JSON.parse(dataInfo);
+        console.log(data);
+        data.forEach(element => {
+            console.log(element.title);
+        });
+        const contentEl = document.querySelector('.content');
+
+        data.forEach(data => {
+            const productEl = document.createElement('div');
+            productEl.classList.add('product');
+
+            const titleEl = document.createElement('h3');
+            titleEl.classList.add('title');
+            titleEl.textContent = data.title;
+
+            const imgEl = document.createElement('img');
+            imgEl.classList.add('image');
+            imgEl.src = data.img;
+            imgEl.setAttribute('alt', data.title);
+
+            priceEl = document.createElement('p');
+            priceEl.classList.add('price');
+            priceEl.textContent = data.price;
+
+            productEl.appendChild(titleEl);
+            productEl.appendChild(imgEl);
+            productEl.appendChild(priceEl);
+            contentEl.appendChild(productEl);
+        });
+    </script>
+
+</body>
+
+</html>

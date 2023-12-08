@@ -2,7 +2,7 @@
 const productEl = document.querySelector('.container-board');
 
 function greatCard(img, title, text, price, id) {
-    //console.log(id);
+
     return `<div class="board1 fon ">
     <div class="flex-board1 cont "><img src="${img}" alt="AI " class="picture-board1 "> <button  id="${id}" class="btn ">
         <img src="img/carrt.png " alt="cart "> 
@@ -27,10 +27,9 @@ function greatProduct(data) {
 }
 greatProduct(dataInfo);
 
-//New
-//nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+//New HW
+
 const previosEl = document.querySelector('.footertotal');
-//console.log(previosEl);
 
 function greatItemCartCard(img, title, price, id, color, size) {
     return `<div id = "${id}" class="cart__cards-item">
@@ -64,31 +63,24 @@ function greatItem(data, idEl, cardEl) {
     const dataEl = JSON.parse(data);
     dataEl.forEach(elementJS => {
         const arrayCart = document.querySelectorAll('.cart__cards-item');
-
         let counter = 0;
         arrayCart.forEach(el => {
-
             if ((idEl === el.id)) {
-                console.log('Товар уже добавлен');
                 counter = counter + 1;
             }
         });
-        console.log(counter);
+
         if ((elementJS.id === idEl) && (counter === 0)) {
             cardEl.insertAdjacentHTML('beforeend', greatItemCartCard(elementJS.img, elementJS.title, elementJS.price, elementJS.id, elementJS.color, elementJS.size));
         }
-
     })
 };
 
 const btnEl = document.querySelectorAll('.btn');
-const bodyy = document.querySelector('body');
 btnEl.forEach(element => {
     let idEl = element.id;
     element.addEventListener('click', function(e) {
-        let quantyty = document.querySelector('.quantyty');
         let cardEl = document.querySelector('.car_items');
-        console.log(cardEl);
         if (cardEl === null) {
             cardEl = document.createElement("div");
             cardEl.classList.add("car_items");
@@ -99,7 +91,6 @@ btnEl.forEach(element => {
             divTitleCardEl.insertAdjacentElement('beforeend', titleCartEl);
             cardEl.insertAdjacentElement('beforeend', divTitleCardEl);
             previosEl.insertBefore(cardEl, previosEl.children[1]);
-
         }
         greatItem(dataInfo, idEl, cardEl);
 
@@ -108,13 +99,10 @@ btnEl.forEach(element => {
 });
 const closeEl = document.querySelector('.cart__cards-close');
 previosEl.addEventListener('click', function(e) {
-    console.log('Privet');
     const elTarget = e.target.closest('.cart__cards-close');
-    //elTarget.remove();
     const parent1 = elTarget.parentElement;
     const parent2 = parent1.parentElement;
     const parent3 = parent2.parentElement;
-    //console.log(parent3);
     parent3.remove();
     const parentParent = document.querySelector('.car_items');
     const cartCart = document.querySelector('.cart__cards-item');
@@ -123,5 +111,5 @@ previosEl.addEventListener('click', function(e) {
         parentParent.children[0].remove();
         parentParent.remove();
     }
-    console.log(parentParent);
+
 });

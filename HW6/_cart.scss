@@ -1,0 +1,274 @@
+@import 'vars';
+@import 'mixin';
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.containers {
+    padding-left: calc(50% - $widthSite/2);
+    display: flex;
+    justify-content: start;
+}
+
+.car_items {
+    margin-top: 156px;
+    margin-bottom: 56px;
+    margin-left: calc(50% - $widthSite/2);
+}
+
+.cart {
+    padding: 96px calc(50% - $widthSite/2) 128px;
+    display: flex;
+    justify-content: space-between;
+    &__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 31px;
+        &-item {
+            position: relative;
+            display: flex;
+            box-shadow: 17px 19px 24px rgba(0, 0, 0, 0.13);
+            width: 740px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            //margin-left: ;
+        }
+        &-desc {
+            width: 359px;
+            padding: 22px 22px 62px 31px;
+        }
+        &-title {
+            margin-bottom: 42px;
+            width: 211px;
+            @include fontStyle(#228,
+            24px,
+            400);
+        }
+        &-price,
+        &-color,
+        &-size,
+        &-quantity {
+            margin-bottom: 6px;
+            @include fontStyle(#575757,
+            22px,
+            400);
+        }
+        &-price span {
+            color: #ef5b70;
+        }
+        &-quantity input {
+            width: 44px;
+            height: 25px;
+            text-align: center;
+        }
+        &-close {
+            position: absolute;
+            top: 28px;
+            right: 22px;
+        }
+        &-btn-block {
+            margin-top: 41px;
+            display: flex;
+            justify-content: space-between;
+        }
+        &-btn {
+            width: 225px;
+            height: 50px;
+            @include fontStyle(#000);
+            background-color: #fff;
+            border: 1px solid #a4a4a4;
+        }
+        &-btn:hover {
+            background-color: $colorPinkSite;
+            color: #fff;
+            transition: 1s;
+        }
+        &-img {
+            background-color: #F7E4E2;
+            width: 360px;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    &__form-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 57px;
+        padding-top: 17px;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 20.5px;
+        width: 360px;
+        &-title {
+            @include fontStyle(#222,
+            16px);
+        }
+        &-input {
+            height: 45px;
+            padding: 13px 17.24px 16px;
+            border: 1px solid #a4a4a4;
+        }
+        &-btn {
+            margin-top: 2px;
+            width: 101.5px;
+            height: 35px;
+            @include fontStyle(#000,
+            11px);
+            background-color: #fff;
+            border: 1px solid #a4a4a4;
+        }
+        &-info {
+            padding: 39px 34px 42px 44px;
+            background-color: #f5f3f3;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        &-sub-total {
+            margin-bottom: 12px;
+            @include fontStyle(#4a4a4a,
+            11px,
+            400);
+            &-value {
+                margin-left: 15px;
+            }
+        }
+        &-grand-total {
+            @include fontStyle(#222,
+            16px);
+            margin-bottom: 21px;
+            &-value {
+                margin-left: 15px;
+                color: $colorPinkSite;
+            }
+        }
+        &-info-btn {
+            width: 273px;
+            height: 50px;
+            @include fontStyle(#fff,
+            16px);
+            background-color: $colorPinkSite;
+            border: none;
+        }
+        &-info-btn:hover {
+            background-color: #fff;
+            color: $colorPinkSite;
+            border: 1px solid $colorPinkSite;
+            transition: 1s;
+        }
+        &-line {
+            margin-bottom: 17px;
+        }
+    }
+}
+
+.divTitleCardEl {
+    display: flex;
+    justify-content: center;
+    color: #222;
+    font-family: Lato;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 64px;
+}
+
+@media screen and (min-width:767px) and (max-width: 1139px) {
+    $widthSite: 704px;
+    .containers {
+        padding-left: calc(50% - $widthSite/2);
+    }
+    .cart {
+        padding: 59px calc(50% - $widthSite/2) 128px;
+        flex-direction: column;
+        justify-content: center;
+        &__cards {
+            &-btn-block {
+                margin: 31px 0 64px;
+                justify-content: center;
+                gap: 48px;
+            }
+            &-btn {
+                width: 225px;
+                height: 50px;
+            }
+        }
+        &__form-wrapper {
+            flex-direction: row;
+            gap: 15.51px;
+            padding-top: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width:350px) {
+    $widthSite: 343px;
+    .containers {
+        justify-content: center;
+    }
+    .centerrr {
+        display: flex;
+        justify-content: center;
+    }
+    .cart {
+        padding: 39px calc(50% - $widthSite/2) 96px;
+        flex-direction: column;
+        justify-content: center;
+        &__cards {
+            &-img {
+                width: 144px;
+                height: 193px;
+            }
+            &-desc {
+                width: 100%;
+                padding: 13.52px 22px 38px 17px;
+            }
+            &-title {
+                margin-bottom: 25.85px;
+                width: 140px;
+                font-size: 16px;
+            }
+            &-price,
+            &-color,
+            &-size,
+            &-quantity {
+                margin-bottom: 4px;
+                font-size: 14px;
+            }
+            &-quantity input {
+                width: 24px;
+                height: 15px;
+            }
+            &-close {
+                top: 17px;
+                right: 12px;
+                width: 9.8px;
+                height: 11px;
+            }
+            &-btn-block {
+                margin: 31px 0 64px;
+                justify-content: center;
+                gap: 9px;
+            }
+            &-btn {
+                width: 225px;
+                height: 50px;
+                font-size: 12px;
+            }
+        }
+        &__form-wrapper {
+            flex-direction: column;
+            gap: 15.51px;
+            padding-top: 0;
+        }
+        &__form {
+            width: 340px;
+        }
+    }
+}
